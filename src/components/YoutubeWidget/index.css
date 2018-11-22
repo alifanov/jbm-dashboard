@@ -1,0 +1,19 @@
+.wrapper > h2 > span {
+  font-size: 12px;
+  display: none;
+}
+
+.wrapper > h2:hover > span {
+  display: inline;
+}
+
+.wrapper > h2 > span:hover {
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+}
