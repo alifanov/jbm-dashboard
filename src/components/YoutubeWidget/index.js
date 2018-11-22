@@ -15,10 +15,10 @@ export default class YoutubeWidget extends Widget {
   }
 
   async getData() {
-    const token = "AIzaSyAA1C6Hfl1nzaK-Ju1Pq9ix3JUeDFuTyEE";
-    const channel = "UCmGCJDXAfywtYSUU6-UBUvQ";
     const res = await fetch(
-      `https://www.googleapis.com/youtube/v3/channels?id=${channel}%20&part=statistics&key=${token}`
+      `https://www.googleapis.com/youtube/v3/channels?id=${
+        this.state.config.channel
+      }%20&part=statistics&key=${this.state.config.token}`
     );
     const data = await res.json();
     this.setState({
