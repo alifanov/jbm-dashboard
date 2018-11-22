@@ -1,5 +1,9 @@
 import React from "react";
 
+import "./index.css";
+
+import { FaCog } from "react-icons/fa";
+
 import WidgetConfig from "../WidgetConfig";
 export default class Widget extends React.Component {
   config = [];
@@ -44,7 +48,7 @@ export default class Widget extends React.Component {
               this.setState({ configMode: !this.state.configMode })
             }
           >
-            edit
+            <FaCog />
           </span>
         </h2>
         {this.state.configMode ? (

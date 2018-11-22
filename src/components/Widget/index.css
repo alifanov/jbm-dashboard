@@ -1,0 +1,24 @@
+.wrapper {
+  border: 1px solid #666;
+  border-radius: 3px;
+  margin: 20px;
+}
+
+.wrapper > h2 {
+  text-align: center;
+}
+
+.wrapper > h2 > span {
+  font-size: 14px;
+}
+
+.wrapper > h2 > span:hover {
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+}
