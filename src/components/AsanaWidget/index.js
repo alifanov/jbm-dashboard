@@ -22,6 +22,7 @@ export default class AsanaWidget extends Widget {
     const userId = user.id;
     const workspaceId = user.workspaces[0].id;
     const res = await this.client.tasks.findAll({
+      limit: 100,
       assignee: userId,
       workspace: workspaceId,
       opt_fields: "id,completed"
