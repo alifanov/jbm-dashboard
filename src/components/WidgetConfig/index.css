@@ -1,0 +1,37 @@
+.config {
+  text-align: center;
+}
+
+.cell-config-field {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.cell-config-field > input {
+  border: 0;
+  background: #eee;
+  width: 100%;
+  padding: 6px 5px;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.cell-config-field > button {
+  background: transparent;
+  color: #eee;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  width: 100%;
+  line-height: 30px;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 0;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.cell-config-field > button:hover {
+  background: #eee;
+  color: #666;
+}

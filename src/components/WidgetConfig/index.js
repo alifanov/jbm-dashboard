@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./index.css";
+
 export default class WidgetConfig extends React.Component {
   state = {};
   constructor(props) {
@@ -9,7 +11,7 @@ export default class WidgetConfig extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="config">
         {Object.entries(this.state).map(item => (
           <div className="cell-config-field" key={item[0]}>
             <input
