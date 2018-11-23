@@ -2,4 +2,4 @@
 
 Simple local dashboard for self management
 
-[Click here](alifanov.github.io/jbm-dashboard)
+[Click here](https://alifanov.github.io/jbm-dashboard)
