@@ -24,6 +24,7 @@ export default class Widget extends React.Component {
 
   componentDidMount() {
     this.getData();
+    setInterval(() => this.getData(), 5000);
   }
 
   saveConfig(config) {
