@@ -3,6 +3,8 @@ import "./App.css";
 
 import GithubWidget from "./components/GithubWidget";
 import YoutubeWidget from "./components/YoutubeWidget";
+import TelegramWidget from "./components/TelegramWidget";
+import AsanaWidget from "./components/AsanaWidget";
 
 class App extends Component {
   render() {
@@ -10,6 +12,8 @@ class App extends Component {
       <div className="App">
         <GithubWidget />
         <YoutubeWidget />
+        <TelegramWidget />
+        <AsanaWidget />
       </div>
     );
   }

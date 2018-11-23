@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "asana": "^0.16.6",
     "graphql-tag": "^2.10.0",
+    "node-telegram-bot-api": "^0.30.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-icons": "^3.2.2",
