@@ -11,6 +11,7 @@ import GithubWidget from "./components/GithubWidget";
 import YoutubeWidget from "./components/YoutubeWidget";
 import TelegramWidget from "./components/TelegramWidget";
 import AsanaWidget from "./components/AsanaWidget";
+import MediumWidget from "./components/MediumWidget";
 
 const WidthGridLayout = WidthProvider(GridLayout);
 
@@ -27,7 +28,8 @@ class App extends Component {
           { i: "github", x: 0, y: 0, w: 1, h: 1 },
           { i: "youtube", x: 1, y: 0, w: 1, h: 1 },
           { i: "telegram", x: 2, y: 0, w: 1, h: 1 },
-          { i: "asana", x: 1, y: 1, w: 1, h: 1 }
+          { i: "asana", x: 0, y: 1, w: 1, h: 1 },
+          { i: "medium", x: 1, y: 1, w: 1, h: 1 }
         ]
       });
     }
@@ -59,6 +61,9 @@ class App extends Component {
           </div>
           <div key="asana">
             <AsanaWidget />
+          </div>
+          <div key="medium">
+            <MediumWidget />
           </div>
         </WidthGridLayout>
       </div>
