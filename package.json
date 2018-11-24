@@ -9,6 +9,7 @@
     "node-telegram-bot-api": "^0.30.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-grid-layout": "^0.16.6",
     "react-icons": "^3.2.2",
     "react-scripts": "2.1.1"
   },

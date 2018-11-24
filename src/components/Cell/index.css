@@ -1,8 +1,6 @@
 .cell {
-  padding: 20px 50px;
-  /* border: 1px solid #eee; */
+  padding: 20px 30px;
   border-radius: 3px;
-  /* min-width: 100px; */
   background: #7f7f7f;
 }
 
