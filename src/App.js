@@ -12,6 +12,7 @@ import YoutubeWidget from "./components/YoutubeWidget";
 import TelegramWidget from "./components/TelegramWidget";
 import AsanaWidget from "./components/AsanaWidget";
 import MediumWidget from "./components/MediumWidget";
+import KaggleWidget from "./components/KaggleWidget";
 
 const WidthGridLayout = WidthProvider(GridLayout);
 
@@ -29,7 +30,8 @@ class App extends Component {
           { i: "youtube", x: 1, y: 0, w: 1, h: 1 },
           { i: "telegram", x: 2, y: 0, w: 1, h: 1 },
           { i: "asana", x: 0, y: 1, w: 1, h: 1 },
-          { i: "medium", x: 1, y: 1, w: 1, h: 1 }
+          { i: "medium", x: 1, y: 1, w: 1, h: 1 },
+          { i: "kaggle", x: 2, y: 1, w: 1, h: 1 }
         ]
       });
     }
@@ -64,6 +66,9 @@ class App extends Component {
           </div>
           <div key="medium">
             <MediumWidget />
+          </div>
+          <div key="kaggle">
+            <KaggleWidget />
           </div>
         </WidthGridLayout>
       </div>

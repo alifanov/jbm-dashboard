@@ -17,7 +17,7 @@ export default class WidgetConfig extends React.Component {
             <input
               type="text"
               placeholder={item[0]}
-              value={item[1]}
+              value={this.state[item[0]]}
               onChange={e => this.setState({ [item[0]]: e.target.value })}
             />
           </div>

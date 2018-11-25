@@ -26,7 +26,6 @@ export default class MediumWidget extends Widget {
       }
     );
     const data = await res.text();
-    console.log("Medium:");
     const doc = new DOMParser().parseFromString(data, "text/html");
     [...doc.querySelectorAll("script")].forEach(el => {
       const matched = /"usersFollowedByCount":(\d+),/.exec(el.innerHTML);
