@@ -2,18 +2,35 @@
   border: 1px solid #666;
   border-radius: 3px;
   margin: 20px;
+  position: relative;
+}
+
+.wrapper .dragging {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  display: none;
+  cursor: pointer;
+}
+.wrapper .config-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 14px;
+  display: none;
+  cursor: pointer;
+}
+.wrapper:hover .dragging,
+.wrapper:hover .config-btn {
+  display: block;
+}
+
+.wrapper .config {
+  margin-bottom: 20px;
 }
 
 .wrapper > h2 {
   text-align: center;
-}
-
-.wrapper > h2 > span {
-  font-size: 14px;
-}
-
-.wrapper > h2 > span:hover {
-  cursor: pointer;
 }
 
 .row {

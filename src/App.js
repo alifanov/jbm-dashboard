@@ -51,6 +51,7 @@ class App extends Component {
           isResizable={false}
           layout={this.state.layout}
           onDragStop={layout => this.saveLayout(layout)}
+          draggableHandle=".dragging"
         >
           <div key="github">
             <GithubWidget />

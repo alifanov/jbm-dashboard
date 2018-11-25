@@ -2,7 +2,7 @@ import React from "react";
 
 import "./index.css";
 
-import { FaCog } from "react-icons/fa";
+import { FaCog, FaExpandArrowsAlt } from "react-icons/fa";
 
 import WidgetConfig from "../WidgetConfig";
 export default class Widget extends React.Component {
@@ -42,16 +42,16 @@ export default class Widget extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <h2>
-          {this.widgetKey}{" "}
-          <span
-            onClick={() =>
-              this.setState({ configMode: !this.state.configMode })
-            }
-          >
-            <FaCog />
-          </span>
-        </h2>
+        <span className="dragging">
+          <FaExpandArrowsAlt />
+        </span>
+        <h2 className="widget-title">{this.widgetKey} </h2>
+        <span
+          className="config-btn"
+          onClick={() => this.setState({ configMode: !this.state.configMode })}
+        >
+          <FaCog />
+        </span>
         {this.state.configMode ? (
           <WidgetConfig
             onSave={result => this.saveConfig({ ...result })}
