@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/jbm-dashboard/static/js/runtime~main.e74d19ab.js"
   },
   {
-    "revision": "f46728d9bc46078d06e3",
-    "url": "/jbm-dashboard/static/js/main.f46728d9.chunk.js"
+    "revision": "668d16f6b86f42912107",
+    "url": "/jbm-dashboard/static/js/main.668d16f6.chunk.js"
   },
   {
     "revision": "928ced55d07af26f6014",
     "url": "/jbm-dashboard/static/js/1.928ced55.chunk.js"
   },
   {
-    "revision": "f46728d9bc46078d06e3",
+    "revision": "668d16f6b86f42912107",
     "url": "/jbm-dashboard/static/css/main.ff948573.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/jbm-dashboard/static/css/1.4521bd25.chunk.css"
   },
   {
-    "revision": "1465c46a12c6ad22f9fac3dd2eb062c0",
+    "revision": "2f66cdb4d68c739b773e451d47095ef2",
     "url": "/jbm-dashboard/index.html"
   }
 ];
