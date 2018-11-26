@@ -5,8 +5,10 @@ import Cell from "../Cell";
 
 import "./index.css";
 
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+
 export default class TelegramWidget extends Widget {
-  config = ["token"];
+  config = ["url"];
   widgetKey = "telegram";
 
   constructor() {
@@ -14,7 +16,15 @@ export default class TelegramWidget extends Widget {
     this.initConfig();
   }
 
-  async getData() {}
+  async getData() {
+    const res = await fetch(proxyUrl + this.state.config.url);
+    const data = await res.json();
+    this.setState({
+      data: {
+        followers: data.followers
+      }
+    });
+  }
 
   renderWidget() {
     return (
