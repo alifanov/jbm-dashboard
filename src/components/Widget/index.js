@@ -45,7 +45,7 @@ export default class Widget extends React.Component {
         <span className="dragging">
           <FaExpandArrowsAlt />
         </span>
-        <h2 className="widget-title">{this.widgetKey} </h2>
+        <h2 className="widget-title">{this.widgetKey.toUpperCase()} </h2>
         <span
           className="config-btn"
           onClick={() => this.setState({ configMode: !this.state.configMode })}

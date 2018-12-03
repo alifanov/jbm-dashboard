@@ -37,7 +37,7 @@ export default class GithubWidget extends Widget {
     return (
       <div className="row">
         <Cell title={"Repos"} value={this.state.data.repositories || 0} />
-        <Cell title={"Folowers"} value={this.state.data.followers || 0} />
+        <Cell title={"Followers"} value={this.state.data.followers || 0} />
         <Cell
           title={"Stars"}
           value={this.state.data.starredRepositories || 0}
