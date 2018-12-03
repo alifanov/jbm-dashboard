@@ -37,7 +37,7 @@ export default class MediumWidget extends Widget {
       data: {
         currentFollowersCount: currentFollowers.followersCount,
         followers: data.result.map(r => ({
-          dt: `${r._id.dayOfMonth}.${r._id.month}`,
+          dt: `${r._id.dayOfMonth.toString().padStart(2, "0")}.${r._id.month}`,
           value: r.followersCount
         }))
       }
