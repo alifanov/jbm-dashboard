@@ -1,7 +1,6 @@
 .cell {
-  padding: 20px 30px;
+  padding: 0px 30px;
   border-radius: 3px;
-  background: #7f7f7f;
 }
 
 .cell-title {
@@ -11,12 +10,11 @@
 }
 
 .cell-body {
-  padding: 15px 0px;
+  padding: 5px 0px;
   text-align: center;
-  padding-bottom: 5px;
 }
 
 .cell-indicator {
-  font-size: 26px;
+  font-size: 30px;
   text-align: center;
 }

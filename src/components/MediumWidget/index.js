@@ -47,16 +47,16 @@ export default class MediumWidget extends Widget {
   renderWidget() {
     return (
       <div className="row">
-        <ResponsiveContainer width="100%" height={110}>
+        <ResponsiveContainer width="100%" height={90}>
           <AreaChart data={this.state.data.followers}>
             <Area
               type="monotone"
               dataKey="value"
-              stroke="#8884d8"
+              stroke="#6567d8"
               fill="#8884d8"
-              dot={{ stroke: "#8884d8", strokeWidth: 2, fill: "#8884d8" }}
+              dot={{ stroke: "#6567d8", strokeWidth: 2, fill: "#6567d8" }}
             />
-            <XAxis dataKey="dt" stroke="#eee" dy={10} />
+            <XAxis hide={true} dataKey="dt" stroke="#eee" dy={10} />
             <YAxis tick={false} axisLine={false} />
             <Tooltip labelStyle={{ color: "#8884d8" }} />
           </AreaChart>

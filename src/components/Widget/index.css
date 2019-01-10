@@ -1,11 +1,20 @@
 .wrapper {
-  border: 1px solid #666;
+  /*border: 1px solid #666;*/
+  background: #888;
   border-radius: 3px;
-  margin: 20px;
+  padding: 20px;
   position: relative;
+  min-height: 150px;
 }
 
-.wrapper .dragging {
+.timeline{
+  position: relative;
+  min-height: 100px;
+}
+
+.wrapper .dragging,
+.timeline .dragging
+{
   position: absolute;
   left: 20px;
   top: 20px;
@@ -20,6 +29,7 @@
   display: none;
   cursor: pointer;
 }
+.timeline:hover .dragging,
 .wrapper:hover .dragging,
 .wrapper:hover .config-btn {
   display: block;
@@ -31,13 +41,16 @@
 
 .wrapper > h2 {
   text-align: center;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 .row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 20px;
+  /*margin: 20px;*/
+  /*margin-top: 0;*/
 }
 
 .react-grid-item.react-grid-placeholder {

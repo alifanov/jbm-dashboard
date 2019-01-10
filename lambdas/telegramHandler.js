@@ -124,8 +124,9 @@ const queryTelegramRecords = async (db, callback) => {
         }
       }
     ])
-    .sort({ _id: 1 })
+    .sort({ _id: -1 })
     .limit(LAST_DAYS)
+    .sort({_id: 1})
     .toArray();
   return result;
 };

@@ -32,3 +32,24 @@ functions:
     handler: telegramHandler.saveTelegramFollowersToMongoDB
     events:
       - schedule: rate(1 hour)
+  getWeight:
+    handler: weightHandler.getWeight
+    events:
+      - http:
+          path: weight
+          method: get
+          private: true
+  getAsanaTasks:
+    handler: asanaHandler.getAsanaTasks
+    events:
+      - http:
+          path: asana/tasks
+          method: get
+          private: true
+  addAsanaTask:
+    handler: asanaHandler.addAsanaTask
+    events:
+      - http:
+          path: asana/tasks
+          method: post
+          private: false

@@ -16,9 +16,9 @@ import "./index.css";
 
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
-export default class TelegramWidget extends Widget {
+export default class WeightWidget extends Widget {
   config = ["url", "apikey"];
-  widgetKey = "telegram";
+  widgetKey = "weight";
 
   constructor() {
     super();
@@ -32,13 +32,13 @@ export default class TelegramWidget extends Widget {
       }
     });
     const data = await res.json();
-    const [currentFollowers] = data.result.slice(-1);
+    const [currentValue] = data.result.slice(-1);
     this.setState({
       data: {
-        currentFollowersCount: currentFollowers.followersCount,
-        followers: data.result.map(r => ({
+        currentWeight: parseFloat(currentValue.weight),
+        weightRecords: data.result.map(r => ({
           dt: `${r._id.dayOfMonth.toString().padStart(2, "0")}.${r._id.month}`,
-          value: r.followersCount
+          value: parseFloat(r.weight)
         }))
       }
     });
@@ -47,8 +47,8 @@ export default class TelegramWidget extends Widget {
   renderWidget() {
     return (
       <div className="row">
-        <ResponsiveContainer width="100%" height={110}>
-          <AreaChart data={this.state.data.followers}>
+        <ResponsiveContainer width="100%" height={90}>
+          <AreaChart data={this.state.data.weightRecords}>
             <Area
               type="monotone"
               dataKey="value"
@@ -63,8 +63,8 @@ export default class TelegramWidget extends Widget {
         </ResponsiveContainer>
         <Cell
           style={{ marginLeft: "20px" }}
-          title={"Followers"}
-          value={this.state.data.currentFollowersCount || 0}
+          title={"Kilos"}
+          value={(this.state.data.currentWeight || 0).toFixed(1)}
         />
       </div>
     );

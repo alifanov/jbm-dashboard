@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
-import GridLayout, { WidthProvider } from "react-grid-layout";
+import GridLayout, {WidthProvider} from "react-grid-layout";
 
 import "./App.css";
 
@@ -13,6 +13,8 @@ import TelegramWidget from "./components/TelegramWidget";
 import AsanaWidget from "./components/AsanaWidget";
 import MediumWidget from "./components/MediumWidget";
 import KaggleWidget from "./components/KaggleWidget";
+import WeightWidget from "./components/WeightWidget";
+import TimelineWidget from "./components/TimelineWidget";
 
 const WidthGridLayout = WidthProvider(GridLayout);
 
@@ -22,16 +24,16 @@ class App extends Component {
   componentDidMount() {
     const layout = localStorage.getItem("layout");
     if (layout !== null) {
-      this.setState({ layout: JSON.parse(layout) });
+      this.setState({layout: JSON.parse(layout)});
     } else {
       this.setState({
         layout: [
-          { i: "github", x: 0, y: 0, w: 1, h: 1 },
-          { i: "youtube", x: 1, y: 0, w: 1, h: 1 },
-          { i: "telegram", x: 2, y: 0, w: 1, h: 1 },
-          { i: "asana", x: 0, y: 1, w: 1, h: 1 },
-          { i: "medium", x: 1, y: 1, w: 1, h: 1 },
-          { i: "kaggle", x: 2, y: 1, w: 1, h: 1 }
+          {i: "github", x: 0, y: 0, w: 1, h: 1},
+          {i: "youtube", x: 1, y: 0, w: 1, h: 1},
+          {i: "telegram", x: 2, y: 0, w: 1, h: 1},
+          {i: "asana", x: 0, y: 1, w: 1, h: 1},
+          {i: "medium", x: 1, y: 1, w: 1, h: 1},
+          {i: "kaggle", x: 2, y: 1, w: 1, h: 1}
         ]
       });
     }
@@ -39,37 +41,44 @@ class App extends Component {
 
   saveLayout(layout) {
     localStorage.setItem("layout", JSON.stringify(layout));
-    this.setState({ layout });
+    this.setState({layout});
   }
+
   render() {
     return (
       <div className="App">
         <WidthGridLayout
           className="layout"
           cols={3}
-          rowHeight={235}
+          rowHeight={190}
           isResizable={false}
           layout={this.state.layout}
           onDragStop={layout => this.saveLayout(layout)}
           draggableHandle=".dragging"
         >
+          <div key='timeline'>
+            <TimelineWidget />
+          </div>
           <div key="github">
-            <GithubWidget />
+            <GithubWidget/>
           </div>
           <div key="youtube">
-            <YoutubeWidget />
+            <YoutubeWidget/>
           </div>
           <div key="telegram">
-            <TelegramWidget />
+            <TelegramWidget/>
           </div>
           <div key="asana">
-            <AsanaWidget />
+            <AsanaWidget/>
           </div>
           <div key="medium">
-            <MediumWidget />
+            <MediumWidget/>
           </div>
           <div key="kaggle">
-            <KaggleWidget />
+            <KaggleWidget/>
+          </div>
+          <div key="weight">
+            <WeightWidget/>
           </div>
         </WidthGridLayout>
       </div>

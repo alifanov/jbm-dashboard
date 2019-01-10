@@ -8,34 +8,38 @@ let atlas_connection_uri;
 let cachedDb = null;
 
 const DB_NAME = "jbm-data";
-const COLLECTION_NAME = "records";
-const SOURCE_NAME = "medium";
-const LAST_DAYS = 10;
+const COLLECTION_NAME = "tasks";
+const SOURCE_NAME = "asana";
+const LAST_TASKS = 10;
 
-module.exports.saveMediumFollowersToMongoDB = async (event, context) => {
-  var uri = process.env.MONGODB_ATLAS_CLUSTER_URI;
-
+module.exports.addAsanaTask = async (event, context) => {
+  let result = '';
+  let uri = process.env.MONGODB_ATLAS_CLUSTER_URI;
   let callback = context.done;
+  const data = JSON.parse(event.body);
   if (atlas_connection_uri != null) {
-    return await processEvent(event, context, callback);
+    result = await processEvent(data, context, callback);
   } else {
     atlas_connection_uri = uri;
     console.log("the Atlas connection string is " + atlas_connection_uri);
-    return await processEvent(event, context, callback);
+    result = await processEvent(data, context, callback);
   }
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      result,
+    }),
+  };
 };
 
-async function processEvent(event, context, callback) {
-  const res = await axios.get("https://medium.com/@jetbootsmaker/followers");
-  const matched = /"usersFollowedByCount":(\d+),/.exec(res.data);
-  const followersCount = parseInt(matched[1]);
-
-  context.callbackWaitsForEmptyEventLoop = false;
-
+const processEvent = async (event, context, callback) => {
   const doc = {
     date: Date.now(),
     source: SOURCE_NAME,
-    followersCount
+    name: event.name,
+    completed: event.completed.toLowerCase() === 'true',
+    taskId: event.taskId,
+    dueAt: event.dueAt && new Date(event.dueAt)
   };
 
   try {
@@ -55,14 +59,15 @@ async function processEvent(event, context, callback) {
   }
 }
 
-async function createDoc(db, doc, callback) {
-  const result = await db.collection(COLLECTION_NAME).insertOne(doc);
+const createDoc = async (db, doc, callback) => {
+  const result = await db.collection(COLLECTION_NAME).update({taskId: doc.taskId}, doc, {upsert: true});
   return "SUCCESS";
 }
 
-module.exports.getMediumFollowersCount = async (event, context) => {
+
+module.exports.getAsanaTasks = async (event, context) => {
   let result;
-  var uri = process.env.MONGODB_ATLAS_CLUSTER_URI;
+  let uri = process.env.MONGODB_ATLAS_CLUSTER_URI;
   let callback = context.done;
   if (atlas_connection_uri != null) {
     result = await getData(event, context, callback);
@@ -89,44 +94,21 @@ const getData = async (event, context, callback) => {
         { useNewUrlParser: true }
       );
       cachedDb = client.db(DB_NAME);
-      return await queryMediumRecords(cachedDb, callback);
+      return await query(cachedDb, callback);
     } else {
-      return await queryMediumRecords(cachedDb, callback);
+      return await query(cachedDb, callback);
     }
   } catch (err) {
     console.error("an error occurred", err);
   }
 };
 
-const queryMediumRecords = async (db, callback) => {
+const query = async (db, callback) => {
   const result = await db
     .collection(COLLECTION_NAME)
-    .aggregate([
-      { $match: { source: SOURCE_NAME } },
-      {
-        $project: {
-          year: { $year: { $toDate: { $toLong: "$date" } } },
-          month: { $month: { $toDate: { $toLong: "$date" } } },
-          dayOfMonth: { $dayOfMonth: { $toDate: { $toLong: "$date" } } },
-          // hour: { $hour: { $toDate: { $toLong: "$date" } } },
-          followersCount: "$followersCount"
-        }
-      },
-      {
-        $group: {
-          _id: {
-            year: "$year",
-            month: "$month",
-            dayOfMonth: "$dayOfMonth"
-            // hour: "$hour"
-          },
-          followersCount: { $max: "$followersCount" }
-        }
-      }
-    ])
+    .find()
     .sort({ _id: -1 })
-    .limit(LAST_DAYS)
-    .sort({_id: 1})
+    .limit(LAST_TASKS)
     .toArray();
   return result;
 };
