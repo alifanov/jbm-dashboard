@@ -15,6 +15,7 @@ import MediumWidget from "./components/MediumWidget";
 import KaggleWidget from "./components/KaggleWidget";
 import WeightWidget from "./components/WeightWidget";
 import TimelineWidget from "./components/TimelineWidget";
+import AnatomyWidget from "./components/AnatomyWidget";
 
 const WidthGridLayout = WidthProvider(GridLayout);
 
@@ -56,6 +57,9 @@ class App extends Component {
           onDragStop={layout => this.saveLayout(layout)}
           draggableHandle=".dragging"
         >
+          <div key='anatomy'>
+            <AnatomyWidget />
+          </div>
           <div key='timeline'>
             <TimelineWidget />
           </div>
